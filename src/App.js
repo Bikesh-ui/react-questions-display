@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React , { useState  } from 'react';
+import Question from './Question';
+import data from './data';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+  const[questions,setQuestion] = useState(data)
+  return(
+    <main>
+      <h2>Our Questions</h2>
+      <div>
+        {
+          questions.map((question)=>{
+            return (
+              <Question key={question.id} {...question} />
+            )
+          })
+        }
+      </div>
+    </main>
+  )
+
 }
-
 export default App;
